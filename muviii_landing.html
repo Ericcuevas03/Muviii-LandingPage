@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muviii - Mudanzas claras y sin estrés</title>
+    <style>
+        :root {
+            --color-primary: #4C4B8E;
+            --color-accent: #FFC447;
+            --color-bg: #F7F7FB;
+            --color-text: #2B2B2B;
+            --color-text-secondary: #666;
+            --color-white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--color-text);
+            background: var(--color-bg);
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: var(--color-white);
+            box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+            z-index: 1000;
+            padding: 16px 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--color-primary);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--color-primary);
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #3d3a70 0%, #4C4B8E 50%, #5a5799 100%);
+            padding: 80px 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 196, 71, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 196, 71, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, -30px) scale(1.1); }
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            text-align: left;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            color: var(--color-white);
+            margin-bottom: 24px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            color: var(--color-white);
+            margin-bottom: 32px;
+            opacity: 0.95;
+            animation: slideInLeft 0.8s ease-out 0.2s backwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            animation: slideInLeft 0.8s ease-out 0.4s backwards;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-accent) 0%, #ffdb70 100%);
+            color: var(--color-text);
+            padding: 14px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 16px rgba(255, 196, 71, 0.4);
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #ffdb70 0%, var(--color-accent) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 196, 71, 0.6);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-white);
+            padding: 14px 32px;
+            border: 2px solid var(--color-white);
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-white);
+            color: var(--color-primary);
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .phone-mock {
+            width: 280px;
+            height: 560px;
+            background: white;
+            border-radius: 32px;
+            border: 12px solid white;
+            box-shadow: 0 24px 48px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: phoneFloat 3s ease-in-out infinite, slideInRight 0.8s ease-out;
+        }
+
+        @keyframes phoneFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .phone-mock::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--color-bg);
+            border-radius: 20px;
+        }
+
+        .phone-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .phone-logo {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 12px;
+        }
+
+        .phone-text {
+            color: var(--color-text);
+            font-size: 16px;
+        }
+
+        /* Section Styles */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 24px;
+            position: relative;
+        }
+
+        section#services::before,
+        section#producto::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 196, 71, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 40px;
+            color: var(--color-primary);
+            margin-bottom: 56px;
+            position: relative;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-accent) 0%, #ffdb70 100%);
+            border-radius: 2px;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 32px;
+            text-align: center;
+        }
+
+        .service-card {
+            background: var(--color-white);
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--color-accent) 0%, #ffdb70 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 16px rgba(255, 196, 71, 0.3);
+        }
+
+        .service-card:hover .service-icon {
+            transform: rotateY(360deg) scale(1.1);
+            box-shadow: 0 8px 24px rgba(255, 196, 71, 0.5);
+        }
+
+        .service-card h3 {
+            color: var(--color-primary);
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: var(--color-text-secondary);
+            font-size: 16px;
+        }
+
+        /* Funcionamiento */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            text-align: left;
+        }
+
+        .step-card {
+            background: var(--color-white);
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.3s ease;
+        }
+
+        .step-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -16px;
+            left: 32px;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--color-accent) 0%, #ffdb70 100%);
+            color: var(--color-text);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            box-shadow: 0 4px 16px rgba(255, 196, 71, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover .step-number {
+            transform: scale(1.15) rotate(360deg);
+        }
+
+        .step-card h3 {
+            color: var(--color-primary);
+            font-size: 22px;
+            margin: 16px 0 12px;
+        }
+
+        /* Equipo */
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .partner-card {
+            background: var(--color-white);
+            padding: 32px 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .partner-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .partner-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .partner-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 32px rgba(76, 75, 142, 0.15);
+        }
+
+        .partner-avatar {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 16px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, #5a5799 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            box-shadow: 0 4px 16px rgba(76, 75, 142, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .partner-card:hover .partner-avatar {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .partner-name {
+            font-weight: 700;
+            color: var(--color-primary);
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .partner-role {
+            color: var(--color-text-secondary);
+            font-size: 14px;
+        }
+
+        /* Producto */
+        .producto-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            text-align: left;
+        }
+
+        .producto-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f9f9fc 100%);
+            padding: 40px 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .producto-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-accent), var(--color-primary));
+            background-size: 200% 100%;
+            animation: shimmer 3s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .producto-card:hover::before {
+            opacity: 1;
+        }
+
+        .producto-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(76, 75, 142, 0.15);
+            border-color: var(--color-accent);
+        }
+
+        .producto-card h3 {
+            color: var(--color-primary);
+            font-size: 24px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .producto-card ul {
+            list-style: none;
+        }
+
+        .producto-card li {
+            padding: 12px 0;
+            color: var(--color-text-secondary);
+            border-bottom: 1px solid var(--color-bg);
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .producto-card li:last-child {
+            border-bottom: none;
+        }
+
+        .producto-card li::before {
+            content: '✓';
+            color: var(--color-accent);
+            font-weight: bold;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        /* Testimonios */
+        .testimonios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            text-align: left;
+        }
+
+        .testimonial-card {
+            background: var(--color-white);
+            padding: 28px;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 80px;
+            color: var(--color-accent);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .avatar {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--color-accent) 0%, #ffdb70 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--color-text);
+            box-shadow: 0 2px 8px rgba(255, 196, 71, 0.3);
+        }
+
+        .testimonial-info h4 {
+            color: var(--color-primary);
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .testimonial-meta {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+        }
+
+        .stars {
+            color: var(--color-accent);
+            margin-bottom: 12px;
+        }
+
+        .testimonial-text {
+            color: var(--color-text-secondary);
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .testimonial-actions {
+            display: flex;
+            gap: 16px;
+            font-size: 14px;
+            color: var(--color-text-secondary);
+        }
+
+        .testimonial-actions span {
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .testimonial-actions span:hover {
+            color: var(--color-primary);
+        }
+
+        /* Descarga */
+        .descarga-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .descarga-card {
+            background: var(--color-white);
+            padding: 48px;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            margin-top: 32px;
+        }
+
+        .descarga-card h3 {
+            color: var(--color-primary);
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+
+        .descarga-card p {
+            color: var(--color-text-secondary);
+            margin-bottom: 24px;
+        }
+
+        /* Contacto */
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-content > p {
+            font-size: 18px;
+            color: var(--color-text-secondary);
+            margin-bottom: 32px;
+        }
+
+        .contact-form {
+            background: var(--color-white);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            margin-top: 32px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--color-text);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--color-bg);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-error {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 4px;
+            display: none;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: linear-gradient(135deg, #3d3a70 0%, var(--color-primary) 100%);
+            color: var(--color-white);
+            padding: 60px 24px 24px;
+            text-align: left;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-about h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+            color: var(--color-accent);
+        }
+
+        .footer-about p {
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+
+        .footer-links h3, .footer-social h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            color: var(--color-white);
+            font-weight: 600;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--color-white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--color-accent);
+            transform: translateX(4px);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--color-white);
+            text-decoration: none;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: var(--color-accent);
+            color: var(--color-primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 24px;
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 68px;
+                left: -100%;
+                width: 100%;
+                background: var(--color-white);
+                flex-direction: column;
+                padding: 24px;
+                box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+                transition: left 0.3s ease;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-content {
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+            
+            .hero-content p {
+                font-size: 18px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-visual {
+                display: none; /* Ocultar el mock del teléfono en pantallas pequeñas */
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+            
+            section {
+                padding: 60px 24px;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-about, .footer-links, .footer-social {
+                text-align: center;
+            }
+            
+            .social-icons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Muviii</div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero">Inicio</a></li>
+                <li><a href="#services">Nuestros Servicios</a></li>
+                <li><a href="#funcionamiento">Funcionamiento</a></li>
+                <li><a href="#equipo">Equipo</a></li>
+                <li><a href="#producto">Producto</a></li>
+                <li><a href="#testimonios">Testimonios</a></li>
+                <li><a href="#descarga">Descarga</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="hero" id="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Mudanzas claras y sin estrés, para personas y empresas</h1>
+                <p>Reserva, coordina y sigue todo en tiempo real desde una sola app.</p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn-primary">Explorar servicios</a>
+                    <a href="#contact" class="btn-secondary">Hablar con nosotros</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="phone-mock">
+                    <div class="phone-content">
+                        <div class="phone-logo">MUVIII</div>
+                        <div class="phone-text">Tu app de mudanzas</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="services">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🚚</div>
+                <h3>Mudanzas Locales</h3>
+                <p>Transporte seguro dentro de tu ciudad con profesionales calificados.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📦</div>
+                <h3>Bienes Grandes</h3>
+                <p>Especialistas en el transporte de muebles y electrodomésticos.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">⭐</div>
+                <h3>Transportistas Verificados</h3>
+                <p>Red de profesionales evaluados y con las mejores calificaciones.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💳</div>
+                <h3>Pagos Seguros</h3>
+                <p>Múltiples métodos de pago con protección total en cada transacción.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="funcionamiento">
+        <h2 class="section-title">Funcionamiento</h2>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3>Publica tu necesidad</h3>
+                <p>Origen/destino, fecha, tipo de carga y fotos.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3>Compara y elige</h3>
+                <p>Empresas, calificaciones y condiciones.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3>Seguimiento total</h3>
+                <p>Chat dentro de la reserva y tracking en tiempo real.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="equipo">
+        <h2 class="section-title">Nuestro Equipo</h2>
+        <div class="partners-grid">
+            <div class="partner-card">
+                <div class="partner-avatar">👨‍💼</div>
+                <div class="partner-name">Lucero</div>
+                <p class="partner-role">CEO</p>
+            </div>
+            <div class="partner-card">
+                <div class="partner-avatar">📊</div>
+                <div class="partner-name">Eric</div>
+                <p class="partner-role">CMO</p>
+            </div>
+            <div class="partner-card">
+                <div class="partner-avatar">💼</div>
+                <div class="partner-name">Isabella</div>
+                <p class="partner-role">CPO</p>
+            </div>
+            <div class="partner-card">
+                <div class="partner-avatar">💻</div>
+                <div class="partner-name">Joseph</div>
+                <p class="partner-role">CTO</p>
+            </div>
+            <div class="partner-card">
+                <div class="partner-avatar">🎨</div>
+                <div class="partner-name">Alonso</div>
+                <p class="partner-role">Head of Design</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="producto">
+        <h2 class="section-title">Producto</h2>
+        <div class="producto-grid">
+            <div class="producto-card">
+                <h3>Gestión para Empresas</h3>
+                <ul>
+                    <li>Administra servicios de mudanza desde la app.</li>
+                    <li>Panel de estado, fechas y responsables.</li>
+                    <li>Historial/auditoría inmutable.</li>
+                </ul>
+            </div>
+            <div class="producto-card">
+                <h3>Seguimiento en Tiempo Real</h3>
+                <ul>
+                    <li>Registro a prueba de cambios.</li>
+                    <li>Tracking y actualizaciones del estado.</li>
+                    <li>Notificaciones clave.</li>
+                </ul>
+            </div>
+            <div class="producto-card">
+                <h3>Encuentra el Servicio Ideal</h3>
+                <ul>
+                    <li>Búsqueda entre múltiples empresas de Lima.</li>
+                    <li>Filtros por tipo de carga, precio y reputación.</li>
+                    <li>Comparación rápida y contratación segura.</li>
+                </ul>
+            </div>
+            <div class="producto-card">
+                <h3>Mensajería en la Reserva</h3>
+                <ul>
+                    <li>Coordina con la empresa dentro de cada reserva.</li>
+                    <li>Adjunta fotos y direcciones.</li>
+                    <li>Todo queda registrado.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonios">
+        <h2 class="section-title">Testimonios</h2>
+        <div class="testimonios-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="avatar">MR</div>
+                    <div class="testimonial-info">
+                        <h4>María Rodríguez</h4>
+                        <div class="testimonial-meta">Hace 2 días</div>
+                    </div>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Excelente servicio, seguimiento en tiempo real y coordinación perfecta. 100% recomendado."</p>
+                <div class="testimonial-actions">
+                    <span>👍 Útil (12)</span>
+                    <span>💬 Responder</span>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="avatar">JL</div>
+                    <div class="testimonial-info">
+                        <h4>Juan López</h4>
+                        <div class="testimonial-meta">Hace 5 días</div>
+                    </div>
+                </div>
+                <div class="stars">★★★★☆</div>
+                <p class="testimonial-text">"Profesional y claro. El chat interno ayudó a coordinar detalles. Volvería a usarlo."</p>
+                <div class="testimonial-actions">
+                    <span>👍 Útil (8)</span>
+                    <span>💬 Responder</span>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <div class="avatar">AS</div>
+                    <div class="testimonial-info">
+                        <h4>Ana Silva</h4>
+                        <div class="testimonial-meta">Hace 1 semana</div>
+                    </div>
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"La mensajería y el tracking nos dieron tranquilidad durante todo el traslado."</p>
+                <div class="testimonial-actions">
+                    <span>👍 Útil (15)</span>
+                    <span>💬 Responder</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="descarga">
+        <div class="descarga-content">
+            <h2 class="section-title">Descarga la App</h2>
+            <div class="descarga-card">
+                <h3>Disponible pronto</h3>
+                <p>Android y iOS</p>
+                <a href="#" class="btn-primary">Recibir aviso de lanzamiento</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-content">
+            <h2 class="section-title">Contacto</h2>
+            <p>¿Tienes preguntas o quieres sumarte como empresa?</p>
+            <a href="mailto:hola@muviii.app" class="btn-primary" style="margin-bottom: 24px; display: inline-block;">Escríbenos</a>
+            
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" id="name" name="name" required>
+                    <div class="form-error" id="nameError">Por favor ingresa tu nombre</div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                    <div class="form-error" id="emailError">Por favor ingresa un email válido</div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" name="message" required></textarea>
+                    <div class="form-error" id="messageError">Por favor ingresa un mensaje</div>
+                </div>
+                <button type="submit" class="btn-primary">Enviar mensaje</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <h3>Muviii</h3>
+                <p>Mudanzas claras y sin estrés, para personas y empresas. Reserva, coordina y sigue todo en tiempo real desde una sola app.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Navegación</h3>
+                <ul>
+                    <li><a href="#hero">Inicio</a></li>
+                    <li><a href="#services">Servicios</a></li>
+                    <li><a href="#funcionamiento">Funcionamiento</a></li>
+                    <li><a href="#producto">Producto</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Síguenos</h3>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook">f</a>
+                    <a href="#" aria-label="Twitter">t</a>
+                    <a href="#" aria-label="Instagram">i</a>
+                    <a href="#" aria-label="LinkedIn">l</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Muviii. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .step-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form validation
+        const contactForm = document.getElementById('contactForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const messageInput = document.getElementById('message');
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function showError(input, errorId) {
+            document.getElementById(errorId).style.display = 'block';
+            input.style.borderColor = '#e74c3c';
+        }
+
+        function hideError(input, errorId) {
+            document.getElementById(errorId).style.display = 'none';
+            input.style.borderColor = 'var(--color-bg)';
+        }
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let isValid = true;
+
+            // Validate name
+            if (nameInput.value.trim() === '') {
+                showError(nameInput, 'nameError');
+                isValid = false;
+            } else {
+                hideError(nameInput, 'nameError');
+            }
+
+            // Validate email
+            if (!validateEmail(emailInput.value)) {
+                showError(emailInput, 'emailError');
+                isValid = false;
+            } else {
+                hideError(emailInput, 'emailError');
+            }
+
+            // Validate message
+            if (messageInput.value.trim() === '') {
+                showError(messageInput, 'messageError');
+                isValid = false;
+            } else {
+                hideError(messageInput, 'messageError');
+            }
+
+            if (isValid) {
+                alert('¡Mensaje enviado! Te contactaremos pronto.');
+                contactForm.reset();
+            }
+        });
+
+        // Real-time validation
+        nameInput.addEventListener('input', () => {
+            if (nameInput.value.trim() !== '') {
+                hideError(nameInput, 'nameError');
+            }
+        });
+
+        emailInput.addEventListener('input', () => {
+            if (validateEmail(emailInput.value)) {
+                hideError(emailInput, 'emailError');
+            }
+        });
+
+        messageInput.addEventListener('input', () => {
+            if (messageInput.value.trim() !== '') {
+                hideError(messageInput, 'messageError');
+            }
+        });
+    </script>
+</body>
+</html>
